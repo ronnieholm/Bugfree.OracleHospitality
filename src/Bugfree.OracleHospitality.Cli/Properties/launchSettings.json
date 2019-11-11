@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Bugfree.OracleHospitality.Clients.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "guid-to-account-number --guid d87f3626-ab52-4fd6-bd6c-a2dcdc1117e6"
+    }
+  }
+}

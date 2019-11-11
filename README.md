@@ -19,7 +19,7 @@ Cli:
 
 ## NuGet package
 
-
+Follow [these](https://www.nuget.org/packages/Bugfree.OracleHospitality.Clients/) instructions.
 
 ## Clone, build, and test
 

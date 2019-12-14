@@ -51,7 +51,7 @@ namespace Bugfree.OracleHospitality.Clients.CrmOperations
             ConsumeAttribute(UnconsumedResponse, C.hostVersion);
         }
 
-        public override void DeconstructResponse()
+        protected override void DeconstructResponse()
         {
             // Contrary to other responses, this operation mirrors TraceID
             // element not below the root element, but at

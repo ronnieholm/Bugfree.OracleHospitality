@@ -229,7 +229,7 @@ namespace Bugfree.OracleHospitality.Clients.IntegrationTests
             }
             catch (OracleHospitalityClientException)
             {
-                // Intentially left blank. Query i for count.
+                // Intentionally left blank. Query i for count.
             }
         }
     }

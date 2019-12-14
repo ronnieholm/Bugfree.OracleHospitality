@@ -28,9 +28,9 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
         public DisplayMessage DisplayMessage { get; private set; }
         public AccountNumber AccountNumber { get; private set; }
 
-        protected XE UnconsumedResponse { get; set; }
-        protected XE Request { get; set; }
-        protected XE Response_ { get; set; }
+        protected XE UnconsumedResponse { get; }
+        protected XE Request { get; }
+        protected XE Response_ { get; }
 
         protected OracleHospitalityClientException ExceptionToRaiseAfterParsing { get; private set; }
 
@@ -41,7 +41,7 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
 
         public abstract void DeconstructResponse();
 
-        private static readonly (string, Func<string, string, bool>)[] AttributesSharedAcrossRequestAndResponse = new (string, Func<string, string, bool>)[]
+        private static readonly (string, Func<string, string, bool>)[] AttributesSharedAcrossRequestAndResponse = 
         {
             (C.sequence, (a, b) => new SequenceNumber(a).ToString() == new SequenceNumber(b).ToString()),
             (C.language, (a, b) => new Language(a).ToString() == new Language(b).ToString()),
@@ -52,7 +52,7 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
             (C.version, (a, b) => new Version(a).ToString() == new Version(b).ToString())
         };
 
-        private static readonly (string, Func<string, string, bool>)[] ElementsSharedAcrossRequestAndResponse = new (string, Func<string, string, bool>)[]
+        private static readonly (string, Func<string, string, bool>)[] ElementsSharedAcrossRequestAndResponse =
         {
             (C.RequestCode, (a, b) => new RequestCode(a).ToString() == new RequestCode(b).ToString()),
             (C.TraceID, (a, b) => new TraceId(a).ToString() == new TraceId(b).ToString()),
@@ -106,7 +106,7 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
             // Save off exception and throw it later when the PosResponse
             // subclass have had a chance to parse it in its
             // DeconstructResponse(). We do so because we value parsing
-            // correctly over immidiately raising an Oracle error or we might
+            // correctly over immediately raising an Oracle error or we might
             // not get to parse part of the error response.
             if (ResponseCode.Value == ResponseCode.Kind.DataCenterInitiatedError)
                 ExceptionToRaiseAfterParsing = new OracleHospitalityClientException(ResponseCode.HostCode, DisplayMessage.Value);

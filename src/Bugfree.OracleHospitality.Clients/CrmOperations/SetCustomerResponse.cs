@@ -13,7 +13,7 @@ namespace Bugfree.OracleHospitality.Clients.CrmOperations
         {
         }
 
-        public override void DeconstructResponse()
+        protected override void DeconstructResponse()
         {
             if (ExceptionToRaiseAfterParsing != null)
                 return;

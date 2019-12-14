@@ -8,7 +8,7 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
     {
         // DESIGN: create fixed regular expression patterns (for hardcoded
         // sizes) rather than dynamically create regular expression because
-        // matching is done a lot and we don't need the flexibilty.
+        // matching is done a lot and we don't need the flexibility.
         //
         // When we specify xN, then N is the maximum number of characters. We
         // don't assert exactly N because most of the time 1 <= actual length <=

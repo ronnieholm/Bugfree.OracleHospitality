@@ -33,7 +33,7 @@ namespace Bugfree.OracleHospitality.Clients.IntegrationTests
             var client = new PosClient(_messageSequencingStrategy, _executor);
 
             var pointIssue = await client.PointIssueAsync(accountNumber);
-            var couponInquery = await client.CouponInquiryAsync(pointIssue.AccountNumber);
+            var couponInquiry = await client.CouponInquiryAsync(pointIssue.AccountNumber);
             var couponCode = new CouponCode("10DKK");
             var couponIssue = await client.CouponIssueAsync(accountNumber, couponCode);
             var couponAccept = await client.CouponAcceptAsync(accountNumber, couponIssue.CouponCode);

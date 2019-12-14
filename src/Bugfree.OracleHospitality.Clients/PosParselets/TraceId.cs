@@ -82,8 +82,8 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
             };
 
             traceIdBuffer.Append(transmissionKind);
-            traceIdBuffer.Append(Sequence.ToString());
-            traceIdBuffer.Append(CheckNumber.ToString());
+            traceIdBuffer.Append(Sequence);
+            traceIdBuffer.Append(CheckNumber);
             return traceIdBuffer.ToString();
         }
     }

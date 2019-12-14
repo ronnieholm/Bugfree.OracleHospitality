@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugfree.OracleHospitality.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugfree.OracleHospitality.Clients", "src\Bugfree.OracleHospitality.Clients\Bugfree.OracleHospitality.Clients.csproj", "{227A5678-1344-4CD0-934B-3C42A9BC5590}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugfree.OracleHospitality.UnitTests", "test\Bugfree.OracleHospitality.UnitTests\Bugfree.OracleHospitality.UnitTests.csproj", "{0CD83BE7-AEBF-4B38-B1BC-AB9D877745B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugfree.OracleHospitality.Clients.UnitTests", "test\Bugfree.OracleHospitality.Clients.UnitTests\Bugfree.OracleHospitality.Clients.UnitTests.csproj", "{0CD83BE7-AEBF-4B38-B1BC-AB9D877745B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugfree.OracleHospitality.IntegrationTests", "test\Bugfree.OracleHospitality.IntegrationTests\Bugfree.OracleHospitality.IntegrationTests.csproj", "{7A6C5AE8-0269-4533-BC65-75D569767116}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bugfree.OracleHospitality.Clients.IntegrationTests", "test\Bugfree.OracleHospitality.Clients.IntegrationTests\Bugfree.OracleHospitality.Clients.IntegrationTests.csproj", "{7A6C5AE8-0269-4533-BC65-75D569767116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

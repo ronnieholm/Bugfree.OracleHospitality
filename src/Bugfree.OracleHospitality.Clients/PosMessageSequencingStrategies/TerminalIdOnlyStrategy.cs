@@ -12,7 +12,7 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
     // be launched many times over a 15 minute sliding window and each time it
     // requires unique messageIds. When using this strategy make sure dependency
     // injection container is setup to inject a single instance of this class
-    // into PosClient. In ConfigureServices, setup must be asingleton:
+    // into PosClient. In ConfigureServices, setup must be a singleton:
     //
     // .AddSingleton<IPosMessageSequencingStrategy, TerminalIdOnlyStrategy>()
     //
@@ -20,8 +20,8 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
     // hopping spread spectrum), the Oracle backend has another, possibly
     // orthogonal mechanism for tracking request. So while this strategy
     // protects against rollback and cross-talk, it doesn't mean that we can
-    // repidly issue more than 9,999 requests. Duing batch load of accounts into
-    // GL, after at most 9,999 requsts, we end with an error response like this
+    // rapidly issue more than 9,999 requests. During batch load of accounts into
+    // GL, after at most 9,999 requests, we end with an error response like this
     // one:
     //
     // <ResponseCode hostCode="68">D</ResponseCode>
@@ -30,7 +30,7 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
     // Presumably, the Oracle backend has logic that within a window of time
     // tracks the last account number associated with a check number, and a
     // check number must be in the range [0;9999]. The account number/check
-    // number tracking is independant of terminal id used.
+    // number tracking is independent of terminal id used.
 
     public class TerminalIdOnlyStrategy : IPosMessageSequencingStrategy
     {

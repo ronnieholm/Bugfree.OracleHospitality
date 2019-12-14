@@ -72,11 +72,11 @@ namespace Bugfree.OracleHospitality.Clients.CrmOperations
             protected set => _displayMessage = value;
         }
 
-        protected XE UnconsumedResponse { get; set; }
-        protected XE Request { get; set; }
-        protected XE Response_ { get; set; }
+        protected XE UnconsumedResponse { get; }
+        protected XE Request { get; }
+        protected XE Response_ { get; }
 
-        public abstract void DeconstructResponse();
+        protected abstract void DeconstructResponse();
 
         private static readonly (string, Func<string, string, bool>)[] AttributesSharedAcrossRequestAndResponse = new (string, Func<string, string, bool>)[]
         {

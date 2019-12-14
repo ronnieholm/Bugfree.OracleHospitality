@@ -12,7 +12,7 @@ using XE = System.Xml.Linq.XElement;
 // DESIGN: generating a SOAP proxy for CRM/POS API WSDL would cause us to lose
 // control over the underlying socket. Internally WCF uses WebClient and not the
 // newer HttpClient. With WebClient we have little control over connection
-// re-use and no way to prevent ephemeral port exchausion.
+// re-use and no way to prevent ephemeral port exhaustion.
 //
 // The CRM/POS API WSDL define SOAP envelope only and not payload. We don't have
 // much use for the thin 150 lines of auto-generated service wrapper as we'd
@@ -97,14 +97,14 @@ namespace Bugfree.OracleHospitality.Clients
             // Because we're storing the request XML element inside the Soap XML
             // element, we must encode the request XML. .NET Core supports using
             // HTML encoding only when XML encoding, but because XML and HTML
-            // differs sligtly (HTML doesn't encode newlines whereas in XML they
+            // differs slightly (HTML doesn't encode newlines whereas in XML they
             // must be encoded as ';&#xD;'), we disabled formatting during
-            // request XML canoncalization, causing the XML to not include
+            // request XML canonicalization, causing the XML to not include
             // newlines. Otherwise, when the Oracle backend calculates CRC32 of
             // the request XML, it'll not match and respond with
             //
             //   <ResponseCode>D</ResponseCode> <DisplayMessage>Request
-            //   failedintegrity check</DisplayMessage> 
+            //   failed integrity check</DisplayMessage> 
             var in0Encoded = WebUtility.HtmlEncode(in0Canonicalized);
             var in3 = Crc32.ToPaddedCrc32String(Crc32.Compute(Encoding.UTF8.GetBytes(in0Canonicalized)));
             return XE.Parse(

@@ -31,7 +31,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
         }
 
         [Fact]
-        public async Task report_uncomsumed_attribute()
+        public async Task report_unconsumed_attribute()
         {
             const string response = @"
                 <?xml version=""1.0"" encoding=""UTF-8""?>
@@ -105,7 +105,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
         }
 
         [Fact]
-        public async Task with_both_unconsumed_element_and_backend_reporting_error_uncomsumed_exception_takes_precedence()
+        public async Task with_both_unconsumed_element_and_backend_reporting_error_unconsumed_exception_takes_precedence()
         {
             // Only check ResponseCode and throw exception after validating
             // every element and attribute. Otherwise, we miss the opportunity
@@ -125,7 +125,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
                     <Amount>0.00</Amount>
                     <SVAN>42</SVAN>
                     <ResponseCode hostCode=""93"">D</ResponseCode>
-                    <DisplayMessage>Coupon (doesNotExist) cannot be found</DisplayMessage>
+                    <DisplayMessage>Coupon (NotExist) cannot be found</DisplayMessage>
                     <NewElement>42</NewElement>
                 </SVCMessage>";
 

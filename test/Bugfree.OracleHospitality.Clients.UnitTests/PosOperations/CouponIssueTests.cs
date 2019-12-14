@@ -138,7 +138,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
                     <ItemType>T</ItemType>
                     <ItemNumber>1</ItemNumber>
                     <ResponseCode hostCode=""127"">D</ResponseCode>
-                    <DisplayMessage>Coupon code (doesNotexist) cannot be found.</DisplayMessage>
+                    <DisplayMessage>Coupon code (NotExist) cannot be found.</DisplayMessage>
                 </SVCMessage>";
 
             var handler = CreateMockMessageHandler(HttpStatusCode.OK, CreateSoapResponse(response.Trim()));
@@ -149,9 +149,9 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
             {
                 var e = 
                     await Assert.ThrowsAsync<OracleHospitalityClientException>(
-                        () => sut.CouponIssueAsync(new AccountNumber("123"), new CouponCode("doesNotExist")));
+                        () => sut.CouponIssueAsync(new AccountNumber("123"), new CouponCode("NotExist")));
                 Assert.Equal("127", e.Code);
-                Assert.Equal("Coupon code (doesNotexist) cannot be found.", e.Message);
+                Assert.Equal("Coupon code (NotExist) cannot be found.", e.Message);
             }
         }
     }

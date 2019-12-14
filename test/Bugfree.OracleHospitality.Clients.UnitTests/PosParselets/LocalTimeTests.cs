@@ -17,7 +17,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosParselets
 
         [Theory]
         [InlineData("")] // Too short
-        [InlineData(" ")] // Whitepace
+        [InlineData(" ")] // Whitespace
         [InlineData("13325")] // Too short
         [InlineData("1332541")] // Too long
         [InlineData("253254")] // Invalid hour

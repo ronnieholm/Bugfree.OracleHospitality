@@ -71,7 +71,7 @@ namespace Bugfree.OracleHospitality.Clients
             }
         }
 
-        public async Task<CouponInqueryResponse> CouponInquiryAsync(AccountNumber accountNumber, CancellationToken cancellationToken = default)
+        public async Task<CouponInquiryResponse> CouponInquiryAsync(AccountNumber accountNumber, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -83,7 +83,7 @@ namespace Bugfree.OracleHospitality.Clients
                         accountNumber);
                 var requestXml = request.BuildRequestDocument();
                 var responseXml = await _executor.ExecuteAsync(requestXml, cancellationToken);
-                return new CouponInqueryResponse(requestXml, responseXml);
+                return new CouponInquiryResponse(requestXml, responseXml);
             }
             catch (OracleHospitalityClientException)
             {

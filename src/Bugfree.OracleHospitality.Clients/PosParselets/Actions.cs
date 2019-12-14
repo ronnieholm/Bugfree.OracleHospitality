@@ -160,8 +160,8 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
             // UNDOCUMENTED: POS API spec, Page 27, states that each <Action>
             // element must contain <Type>, <Data>, and <Text> elements. It's
             // unclear why <Code>, short for coupon code, is left out. It's part
-            // of the response of the COUPON_INQUERY operation. Perhaps it isn't
-            // alaways part of the response of other operations, perhaps
+            // of the response of the COUPON_INQUIRY operation. Perhaps it isn't
+            // always part of the response of other operations, perhaps
             // documentation is out of date.
             var codeElement = ExpectElement(action, C.Code);
             Code = new ActionCode(codeElement);

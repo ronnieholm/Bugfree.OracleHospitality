@@ -9,7 +9,7 @@ namespace Bugfree.OracleHospitality.Clients
     {
         Task<PointIssueResponse> PointIssueAsync(AccountNumber accountNumber, CancellationToken cancellationToken = default);
         Task<CouponIssueResponse> CouponIssueAsync(AccountNumber accountNumber, CouponCode couponCode, CancellationToken cancellationToken = default);
-        Task<CouponInqueryResponse> CouponInquiryAsync(AccountNumber accountNumber, CancellationToken cancellationToken = default);
+        Task<CouponInquiryResponse> CouponInquiryAsync(AccountNumber accountNumber, CancellationToken cancellationToken = default);
         Task<CouponAcceptResponse> CouponAcceptAsync(AccountNumber accountNumber, CouponCode couponCode, CancellationToken cancellationToken = default);
     }
 }

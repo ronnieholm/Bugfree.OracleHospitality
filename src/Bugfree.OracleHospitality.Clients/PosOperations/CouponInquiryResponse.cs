@@ -9,14 +9,14 @@ using static Bugfree.OracleHospitality.Clients.ParserHelpers;
 
 namespace Bugfree.OracleHospitality.Clients.PosOperations
 {
-    public class CouponInqueryResponse : PosResponse
+    public class CouponInquiryResponse : PosResponse
     {
         public ReadOnlyCollection<Action> Actions { get; private set; }
         public Currency AccountCurrency { get; private set; }
         public ExchangeRate ExchangeRate { get; private set; }
         public PrintLines PrintLines { get; private set; }
 
-        public CouponInqueryResponse(XE request, XE response)
+        public CouponInquiryResponse(XE request, XE response)
             : base(request, response)
         {
         }

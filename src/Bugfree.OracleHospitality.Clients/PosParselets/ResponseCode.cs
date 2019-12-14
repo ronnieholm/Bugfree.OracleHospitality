@@ -29,7 +29,7 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
         {
             // POS API spec, Page 19: according to DisplayMessage documentation,
             // additional response codes include E, V, and P. Those should be
-            // shown to POS terminal user. We haven't encounted these codes and
+            // shown to POS terminal user. We haven't encountered these codes and
             // thus doesn't parse those.
             var value = responseCode.Value;
             FieldTypes.AssertA1(value);

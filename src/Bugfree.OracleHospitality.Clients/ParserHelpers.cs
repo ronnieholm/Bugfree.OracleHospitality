@@ -7,7 +7,7 @@ using XE = System.Xml.Linq.XElement;
 // APIs requests/responses classes. That would introduce another level in the
 // inheritance hierarchy with <some-crm-response> inheriting from CrmResponse
 // inheriting from Response where methods below would go. Such deep inheritance
-// hierarchy couples components unnecessarity.
+// hierarchy couples components unnecessarily.
 
 namespace Bugfree.OracleHospitality.Clients
 {

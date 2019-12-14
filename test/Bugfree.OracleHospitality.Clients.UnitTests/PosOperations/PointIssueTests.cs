@@ -151,7 +151,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
                 <PointsIssued>0</PointsIssued>
                 <BonusPointsIssued>0</BonusPointsIssued>
                 <PrintLines>
-                    <PrintLine>LUX FORDEL</PrintLine>
+                    <PrintLine>LUX BENEFIT</PrintLine>
                 </PrintLines>
                 <DisplayMessage>Transaction Complete. </DisplayMessage>
                 </SVCMessage>";
@@ -174,7 +174,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.PosOperations
                 Assert.Equal(0m, actual.PointsIssued.Value);
                 Assert.Equal(0m, actual.BonusPointsIssued.Value);
                 Assert.Single(actual.PrintLines.Values);
-                Assert.Equal("LUX FORDEL", actual.PrintLines.Values[0].Value);
+                Assert.Equal("LUX BENEFIT", actual.PrintLines.Values[0].Value);
                 Assert.Equal("Transaction Complete. ", actual.DisplayMessage.Value);
             }
         }

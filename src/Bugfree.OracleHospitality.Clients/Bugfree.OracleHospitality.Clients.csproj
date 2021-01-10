@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
-    <TargetFramework>netstandard2</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Ronnie Holm</Authors>
     <Company>Bugfree Consulting</Company>
     <Description>.NET Standard 2.0 clients for the Oracle Hospitality, Gift &amp; Loyalty Point of Sale (POS) and Customer Relationship Management (CRM) web services.</Description>

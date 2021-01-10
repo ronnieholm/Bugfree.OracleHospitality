@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Authors>Ronnie Holm</Authors>
     <Company>Bugfree Consulting</Company>
     <Description>.NET Core command-line interface to Oracle Hospitality, Gift &amp; Loyalty Point of Sale and Customer Relationship Management web services.</Description>

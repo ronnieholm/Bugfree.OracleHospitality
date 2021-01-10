@@ -24,7 +24,7 @@ namespace Bugfree.OracleHospitality.Clients.CrmParselets
              <ResponseCode>E</ResponseCode>
              <Error code="1">Unsupported parameter: NonExistingEntity</Error>
 
-         or for SetCustomer operation (among others):
+         Or for SetCustomer operation (among others):
 
             <ResponseCode>D</ResponseCode>
             <DisplayMessage>com.micros.storedValue.worker.SetRollbackException: Update failed for row ID = 123</DisplayMessage>

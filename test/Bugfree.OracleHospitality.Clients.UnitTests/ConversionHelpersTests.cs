@@ -111,8 +111,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests
             // P/Invoke into rpcrt4.dll is only supported on Windows. On other
             // platforms, the test results in "System.DllNotFoundException:
             // Unable to load shared library 'rpcrt4.dll' or one of its
-            // dependencies". With .NET Core, it's common for Linux based Azure
-            // build agents in which case we bail out.
+            // dependencies".
             if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 return;
 

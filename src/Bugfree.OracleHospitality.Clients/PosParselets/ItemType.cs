@@ -18,8 +18,8 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
         public ItemType(string value)
         {
             // UNDOCUMENTED: according to POS API spec, Page 21, ItemType is of
-            // type XML with no field type definition. We've yet to encounter any
-            // XML beneath the ItemType element. In the responses we've
+            // type XML with no field type definition. We've yet to encounter
+            // any XML beneath the ItemType element. In the responses we've
             // encountered, the format is <ItemType>T</ItemType>.
             FieldTypes.AssertA1(value);
             Value = value switch

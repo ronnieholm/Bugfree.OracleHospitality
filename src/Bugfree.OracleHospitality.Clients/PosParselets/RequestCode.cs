@@ -9,7 +9,7 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
         COUPON_INQUIRY,
         SV_ISSUE_COUPON,
 
-        // Erronously named SVC_ACCEPT_COUPON in POS API spec, Page 16
+        // Erroneously named SVC_ACCEPT_COUPON in POS API spec, Page 16
         SV_ACCEPT_COUPON,
         POINT_ISSUE
     }

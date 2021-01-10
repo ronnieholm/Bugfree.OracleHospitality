@@ -10,15 +10,14 @@ namespace Bugfree.OracleHospitality.Clients
         // CRC is used to detect burst errors and the CRC32 variant can detect
         // up to 32 mangled bits in a row. Why CRC32 is used with the Oracle
         // APIs, except for legacy reasons, is unclear. Perhaps because TCP/IP
-        // wasn't always used for transport. Because with TCP/IP the IPv4, but
-        // not IPv6, header itself holds a checksum protecting IP header fields
-        // from corruption and within the data link layer, the Ethernet header
+        // wasn't always used for transport. With TCP/IP the IPv4, but not IPv6,
+        // header itself holds a checksum protecting IP header fields from
+        // corruption and within the data link layer, the Ethernet header
         // contains a CRC field.
         private readonly static uint[] ChecksumTable;
 
-        // Whether to compute or hardcode the checksum table is a classic
-        // time-space trade-off. We elect to compute the table, but only once
-        // per process.
+        // Whether to compute or hardcode the checksum table is a time-space
+        // trade-off. We elect to compute the table, but only once per process.
         static Crc32()
         {
             const uint GeneratorPolynomial = 0xEDB88320;

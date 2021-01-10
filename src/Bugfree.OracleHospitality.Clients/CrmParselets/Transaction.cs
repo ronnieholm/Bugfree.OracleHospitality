@@ -9,9 +9,9 @@ namespace Bugfree.OracleHospitality.Clients.CrmParselets
     {
         public abstract class TransactionBuilder
         {
-            // DESIGN: for now, all we need is the ability to Close and Reopen
-            // accounts. If we require additional transaction type, factor
-            // common elements and behavior into this case.
+            // For now, all we need is the ability to Close and Reopen accounts.
+            // If we require additional transaction types, factor common
+            // elements and behavior into this case.
             //
             // Each transaction is akin to a sub-operation of
             // PostAccountTransaction.
@@ -20,7 +20,7 @@ namespace Bugfree.OracleHospitality.Clients.CrmParselets
         }
 
         // UNDOCUMENTED: the elements that must go with kind CloseAccount and
-        // ReopenAccount aren't par of the CRM API spec, Page 33. They were
+        // ReopenAccount aren't part of the CRM API spec, Page 33. They were
         // inferred by starting with Type and for each Oracle error message
         // about a missing element, the element was added.
         public class CloseReopenTransactionBuilder : TransactionBuilder

@@ -68,7 +68,7 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
 
                 var profilesElement = Response_.Element(C.PrintLines);
                 if (profilesElement == null)
-                    throw new ArgumentException($"Expected '{C.PrintLines}' element to always be present when '{C.Actions}' element is");
+                    throw new ArgumentException($"Expected '{C.PrintLines}' element to always be present together with '{C.Actions}' element");
                 PrintLines = new PrintLines(profilesElement);
                 ConsumeElement(UnconsumedResponse, C.PrintLines);
             }

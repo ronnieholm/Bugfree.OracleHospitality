@@ -22,7 +22,7 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
             // SV_ACCEPT_COUPON differs in that its request and response both
             // has a SVAN, but only upon failure does response hold the actual
             // SVAN from the request. Upon success, while the element is named
-            // SVAN, it's no longer SVAN but CouponCode (serial number)
+            // SVAN, it's no longer SVAN but the CouponCode (serial number)
             // accepted.
             var requestCouponCodeElement = ExpectElement(Request, C.CouponCode);
             var requestSvanElement = ExpectElement(Request, C.SVAN);

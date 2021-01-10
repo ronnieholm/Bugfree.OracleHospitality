@@ -29,14 +29,14 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
 
         public CheckNumber Increment()
         {
-            // Wrap around would happen after 9999 retries, but we disallow wrap
-            // around. Unlike Sequence number which must only be incremented
-            // upon successful request/response, CheckNumber must be incremented
-            // with every request.
+            // Wrap around would happen after 9,999 retries, but we disallow
+            // wrap around. Unlike Sequence number which must only be
+            // incremented upon successful request/response, CheckNumber must be
+            // incremented with every request.
             //
             // UNDOCUMENTED: the purpose of CheckNumber is unclear. Because
             // issuing a new retry request, its timestamp would be updated,
-            // making TraceID unique withou CheckNumber.
+            // making TraceID unique without CheckNumber.
             if (Value >= MaxValue)
                 throw new ArgumentException($"{nameof(CheckNumber)} overflow");
             return new CheckNumber(Value + 1);

@@ -14,7 +14,7 @@ using Bugfree.OracleHospitality.Clients;
 
 namespace Bugfree.OracleHospitality.Cli
 {
-   [Verb("point-issue", HelpText = "GL POS POINT_ISSUE operation")]
+    [Verb("point-issue", HelpText = "GL POS POINT_ISSUE operation")]
     public class PointIssueOptions
     {
         [Option("account-number", Required = true, HelpText = "Account number in GL account store")]
@@ -27,7 +27,7 @@ namespace Bugfree.OracleHospitality.Cli
         [Option("account-number", Required = true, HelpText = "Account number in GL account store")]
         public string AccountNumber { get; set; }
 
-        [Option("coupon-code", Required = true, HelpText = "Coupon code (fixed string) in GL coupon store")]
+        [Option("coupon-code", Required = true, HelpText = "Coupon code (serial number) in GL coupon store")]
         public string CouponCode { get; set; }
     }
 
@@ -51,17 +51,17 @@ namespace Bugfree.OracleHospitality.Cli
     [Verb("set-customer", HelpText = "GL CRM SetCustomer operation")]
     public class SetCustomerOptions
     {
-        [Option("row-id", Required = false, HelpText = "row id must be non-null when associating customer to existing account")]
+        [Option("row-id", Required = false, HelpText = "Row Id must be non-null when associating customer to existing account")]
         public int? RowId { get; set; }
 
-        [Option("column-values", Required = true, HelpText = "columns/value to set")]
+        [Option("column-values", Required = true, HelpText = "Columns/values to set")]
         public IEnumerable<string> ColumnValues { get; set; }
     }
 
     [Verb("post-account-transaction", HelpText = "GL CRM PostAccountTransaction operation")]
     public class PostAccountTransactionOptions
     {
-        [Option("type", Required = true, HelpText = "CloseAccount or ReopenAccount currently supported")]
+        [Option("type", Required = true, HelpText = "Only CloseAccount or ReopenAccount supported")]
         public Transaction.Type.Kind Type { get; set; }
 
         [Option("program-code", Required = true, HelpText = "Program code in GL program store")]
@@ -74,56 +74,56 @@ namespace Bugfree.OracleHospitality.Cli
     [Verb("get-column-list", HelpText = "GL GRM GetColumnList operation")]
     public class GetColumnListOptions
     {
-        [Option("request", Required = true, HelpText = "entity to lookup such as 'customer', 'account', or 'program'")]
+        [Option("request", Required = true, HelpText = "Entity to lookup such as 'customer', 'account', or 'program'")]
         public string Request { get; set; }
     }
 
     [Verb("get-customer", HelpText = "GL CRM GetCustomer operation")]
     public class GetCustomerOptions
     {
-        [Option("conditions", Required = true, HelpText = "where clause such as 'primaryposref = ?'")]
+        [Option("conditions", Required = true, HelpText = "Where clause such as 'primaryposref = ?'")]
         public string Conditions { get; set; }
 
-        [Option("column-values", Required = true, HelpText = "key/values matching 'conditions' option")]
+        [Option("column-values", Required = true, HelpText = "Keys/values matching 'conditions' option")]
         public IEnumerable<string> ColumnValues { get; set; }
 
-        [Option("columns", Required = true, HelpText = "output columns")]
+        [Option("columns", Required = true, HelpText = "Output columns")]
         public IEnumerable<string> Columns { get; set; }
     }
 
     [Verb("get-account", HelpText = "GL CRM GetAccount operation")]
     public class GetAccountOptions
     {
-        [Option("conditions", Required = true, HelpText = "where clause such as 'accountposref = ?'")]
+        [Option("conditions", Required = true, HelpText = "Where clause such as 'accountposref = ?'")]
         public string Conditions { get; set; }
 
-        [Option("column-values", Required = true, HelpText = "key/values matching 'conditions' option")]
+        [Option("column-values", Required = true, HelpText = "Keys/values matching 'conditions' option")]
         public IEnumerable<string> ColumnValues { get; set; }
 
-        [Option("columns", Required = true, HelpText = "output columns")]
+        [Option("columns", Required = true, HelpText = "Output columns")]
         public IEnumerable<string> Columns { get; set; }
     }
 
     [Verb("get-program", HelpText = "GL CRM GetProgram operation")]
     public class GetProgramOptions
     {
-        [Option("conditions", Required = true, HelpText = "where clause such as 'programid = ?'")]
+        [Option("conditions", Required = true, HelpText = "Where clause such as 'programid = ?'")]
         public string Conditions { get; set; }
 
-        [Option("column-values", Required = true, HelpText = "key/values matching 'conditions' option")]
+        [Option("column-values", Required = true, HelpText = "Keys/values matching 'conditions' option")]
         public IEnumerable<string> ColumnValues { get; set; }
 
-        [Option("columns", Required = true, HelpText = "output columns")]
+        [Option("columns", Required = true, HelpText = "Output columns")]
         public IEnumerable<string> Columns { get; set; }
     }
 
     [Verb("get-coupons", HelpText = "GL CRM GetCoupons operation")]
     public class GetCouponsOptions
     {
-        [Option("conditions", Required = true, HelpText = "where clause such as 'primaryposref = ?'")]
+        [Option("conditions", Required = true, HelpText = "Where clause such as 'primaryposref = ?'")]
         public string Conditions { get; set; }
 
-        [Option("column-values", Required = true, HelpText = "key/values matching 'conditions' option")]
+        [Option("column-values", Required = true, HelpText = "Keys/values matching 'conditions' option")]
         public IEnumerable<string> ColumnValues { get; set; }
     }
 
@@ -177,7 +177,7 @@ namespace Bugfree.OracleHospitality.Cli
                 .AddScoped<Application, Application>()
 
                 // HttpClient configuration must follow above addition of
-                // of dependent types to container or an exception is thrown:
+                // dependent types to container or an exception is thrown:
                 // System.InvalidOperationException: 'Unable to resolve service
                 // for type 'System.Net.Http.HttpClient' while attempting to
                 // activate' [...] PosClient'.'

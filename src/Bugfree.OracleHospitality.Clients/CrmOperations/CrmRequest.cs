@@ -21,13 +21,12 @@ namespace Bugfree.OracleHospitality.Clients.CrmOperations
 
         protected XE BuildBaseDocument(RequestCode.Kind requestCode)
         {
-            // UNDOCUMENTED: base document for CRM requests. Compared to the POS
-            // API spec, the concept of a base document isn't explicitly part of
-            // the CRM API spec and has been inferred from examples. For reasons
-            // unknown, GetCoupons API spec example doesn't include
-            // RequestSourceName. It probably supports it given that other
-            // operations does so we include RequestSourceName for every
-            // operation.
+            // UNDOCUMENTED: base document for CRM requests. The concept of a
+            // base document isn't explicitly part of the CRM API spec and has
+            // been inferred from examples. For reasons unknown, GetCoupons API
+            // spec example doesn't include RequestSourceName. API probably
+            // supports it given that other operations include it, so we include
+            // RequestSourceName with every operation.
             return new XE(C.CRMMessage,
                 new XA(C.language, new Language(Language.Kind.EnUs)),
                 new XA(C.currency, new Currency(Currency.Kind.DKK)),

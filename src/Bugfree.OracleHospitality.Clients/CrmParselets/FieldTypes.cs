@@ -40,7 +40,7 @@ namespace Bugfree.OracleHospitality.Clients.CrmParselets
         {
             var success = decimal.TryParse(s, out var @decimal);
             if (!success)
-                throw new ArgumentException($"Cannot convert to System.Int32: {s}");
+                throw new ArgumentException($"Cannot convert to System.Decimal: {s}");
             return @decimal;
         }
     }

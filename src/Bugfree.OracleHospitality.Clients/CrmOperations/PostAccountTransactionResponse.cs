@@ -4,9 +4,9 @@ using C = Bugfree.OracleHospitality.Clients.CrmParselets.Constants;
 using static Bugfree.OracleHospitality.Clients.CrmParselets.Transaction;
 using static Bugfree.OracleHospitality.Clients.ParserHelpers;
 
-// DESIGN: this operation's response differs from other CRM operations in that
-// it appears to delegate to an undocumented Oracle internal POS API call. 
-// Typical to CRM operations is that their root element looks like this:
+// This operation's response differs from other CRM operations in that it
+// appears to delegate to an undocumented Oracle internal POS API call. Typical
+// to CRM operations is that their root element looks like this:
 //
 // <CRMMessage language=""en_US"" currency=""DKK"" isTrustedSAT=""false""
 // hostversion=""1.00"">
@@ -16,8 +16,8 @@ using static Bugfree.OracleHospitality.Clients.ParserHelpers;
 // <CRMMessage hostVersion=""9.1.0000.2301"" language=""en_US"" currency=""DKK""
 // isTrustedSAT=""false"">
 //
-// Attributes on root element is a combination of those of the CRM and POS APIs. 
-// As for response elements, their names resemle those of POS operations.
+// Attributes on root element is a combination of those of the CRM and POS APIs.
+// As for the response elements, their names resemble those of POS operations.
 
 namespace Bugfree.OracleHospitality.Clients.CrmOperations
 {

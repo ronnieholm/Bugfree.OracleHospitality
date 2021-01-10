@@ -5,12 +5,12 @@
     <TargetFramework>net5.0</TargetFramework>
     <Authors>Ronnie Holm</Authors>
     <Company>Bugfree Consulting</Company>
-    <Description>.NET Standard 2.0 clients for the Oracle Hospitality, Gift &amp; Loyalty Point of Sale (POS) and Customer Relationship Management (CRM) web services.</Description>
+    <Description>.NET 5.0 clients for the Oracle Hospitality, Gift &amp; Loyalty Point of Sale (POS) and Customer Relationship Management (CRM) web services.</Description>
     <PackageIcon></PackageIcon>
     <RepositoryUrl>https://github.com/ronnieholm/Bugfree.OracleHospitality</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl></PackageIconUrl>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
     <PackageTags>OracleHospitality Gift&amp;Loyalty</PackageTags>
   </PropertyGroup>
 

@@ -2,8 +2,8 @@
 
 namespace Bugfree.OracleHospitality.Clients.CrmParselets
 {
-    // Represents multiple elements: GetCoupons and GetCustomer uses this for
-    // their Condition node, SetCustomer uses this for DSColumn (column) and Col
+    // Represents multiple elements: GetCoupons and GetCustomer uses it for
+    // their Condition node; SetCustomer uses it for DSColumn (column) and Col
     // (values) nodes.
     public class ColumnValue : IRequestElement
     {

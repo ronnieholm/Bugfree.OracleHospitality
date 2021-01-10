@@ -7,7 +7,7 @@ using static Bugfree.OracleHospitality.Clients.ParserHelpers;
 
 namespace Bugfree.OracleHospitality.Clients.CrmParselets
 {
-    // Parses:
+    // Parses
     //
     // <ResultSetDefinition>
     //   <Column>firstName</Column>

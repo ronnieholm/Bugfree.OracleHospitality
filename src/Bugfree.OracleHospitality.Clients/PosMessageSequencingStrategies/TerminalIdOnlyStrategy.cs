@@ -7,10 +7,10 @@ using Bugfree.OracleHospitality.Clients.PosParselets;
 
 namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
 {
-    // DESIGN: preferred strategy with multi-threading though may as well be
-    // used with single-threading for low friction setup. For instance, CLI may
-    // be launched many times over a 15 minute sliding window and each time it
-    // requires unique messageIds. When using this strategy make sure dependency
+    // Preferred strategy with multi-threading though may also be used with
+    // single-threading for a low friction setup. For instance, CLI may be
+    // launched many times over a 15 minute sliding window and each time it
+    // requires unique messageIds. Using this strategy ensures dependency
     // injection container is setup to inject a single instance of this class
     // into PosClient. In ConfigureServices, setup must be a singleton:
     //
@@ -20,12 +20,12 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
     // hopping spread spectrum), the Oracle backend has another, possibly
     // orthogonal mechanism for tracking request. So while this strategy
     // protects against rollback and cross-talk, it doesn't mean that we can
-    // rapidly issue more than 9,999 requests. During batch load of accounts into
-    // GL, after at most 9,999 requests, we end with an error response like this
-    // one:
+    // rapidly issue more than 9,999 requests. During batch load of accounts
+    // into GL, after at most 9,999 requests, we end with an error response like
+    // this one:
     //
-    // <ResponseCode hostCode="68">D</ResponseCode>
-    // <DisplayMessage>Only one card can be associated with a check</DisplayMessage>
+    // <ResponseCode hostCode="68">D</ResponseCode> <DisplayMessage>Only one
+    // card can be associated with a check</DisplayMessage>
     //
     // Presumably, the Oracle backend has logic that within a window of time
     // tracks the last account number associated with a check number, and a
@@ -41,7 +41,7 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
         public TerminalId UpperBound { get; private set; }
         public static SequenceNumber ConstantSequenceNumber = new SequenceNumber(0);
 
-        // Holds for at least the grace period MessageIds to detect duplicates
+        // Holds MessageIds to detect duplicates for at least the grace period.
         // It may hold additional MessageIds until
         // HistoryAdditionOperationsCleanupThreshold is reaches and dictionary
         // is pruned to hold only MessageIds within the grace period.
@@ -85,7 +85,7 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
                 {
                     // Explicitly format timestamp or it'll render differently
                     // based on machine setup, Not only does it make tests fail
-                    // but reading the message in a log one would have to make
+                    // but reading the message in a log, one would have to make
                     // assumptions about the format.
                     throw new ArgumentException($"TerminalId {terminalId} was last used at {timestamp.ToString("yyyyMMddHHmmss")} which is less than {ReuseGracePeriod.Minutes} minutes ago. Consider increasing the terminalId pool size");
                 }
@@ -95,12 +95,11 @@ namespace Bugfree.OracleHospitality.Clients.PosMessageSequencingStrategies
                 _historyAdditionOperationsUntilNextPrune--;
 
                 // Pruning history whenever it reaches a certain length could
-                // lead to cleaning having little effect on length when only a
-                // single MessageId expired since the last call. Instead we
-                // clean only every n operations. This means that we may store a
+                // lead to pruning having little effect on length when only a
+                // single MessageId has expired since the last call. Instead we
+                // prune every n operations. This means that we may store a
                 // longer history than the grace period requires, but that
-                // cleaning is triggered less frequently and with larger effect
-                // on length. 
+                // pruning is triggered less frequently and with larger effect. 
                 if (_historyAdditionOperationsUntilNextPrune == 0)
                 {
                     var clean = History.Where(kvp => kvp.Value.Add(ReuseGracePeriod) < TimeProvider.Now).ToArray();

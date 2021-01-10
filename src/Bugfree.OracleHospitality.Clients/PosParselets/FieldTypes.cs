@@ -6,13 +6,14 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
 {
     static class FieldTypes
     {
-        // DESIGN: create fixed regular expression patterns (for hardcoded
-        // sizes) rather than dynamically create regular expression because
-        // matching is done a lot and we don't need the flexibility.
+        // Create fixed regular expression patterns (for hardcoded sizes) rather
+        // than dynamically create regular expression because matching is done a
+        // lot and we don't need the flexibility.
         //
         // When we specify xN, then N is the maximum number of characters. We
-        // don't assert exactly N because most of the time 1 <= actual length <=
-        // N. If a specific length is required, a parslet can assert its length.
+        // don't assert exactly N because most of the time 1 <= actual <= N. If
+        // a specific length is required, a parslet can explicitly assert its
+        // length.
         //
         // UNDOCUMENTED: what encompasses an alphanumeric character except the
         // obvious digits and alphanumeric characters is undefined. "-" is
@@ -40,11 +41,11 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
         private const string TimePattern = @"^(?<hour>\d{2})(?<minute>\d{2})(?<second>\d{2})$";
 
         // Decimal pattern of "[-][1-9][0-9]*[.][0-9]*" in POS API spec, Page
-        // 17, is incorrect, making leading zeros not permitted. A leading zero
-        // is allowed and sometimes even required. For instance, COUPON_INQUIRY
-        // requests must contain an Amount XML element or the request fails.
-        // When we don't have a reasonable amount to specify, we must specify
-        // 0.00.
+        // 17, is incorrect as it makes leading zeros not permitted. A leading
+        // zero is allowed and sometimes even required. For instance,
+        // COUPON_INQUIRY requests must contain an Amount XML element or the
+        // request fails. When we don't have a reasonable amount to specify, we
+        // must specify 0.00.
         private const string DecimalPattern = @"^(?<sign>(-{0,1}))(?<characteristic>([0-9]|[1-9][0-9]*))($|(?<comma>(\.))(?<mantissa>([0-9]+)))$";
 
         private static readonly Regex A1 = new Regex(A1Pattern, RegexOptions.Compiled);

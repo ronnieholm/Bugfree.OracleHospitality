@@ -161,9 +161,9 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.CrmOperations
             Assert.Equal(80, columns.Count);
 
             // Oracle backend uses all caps for fields. That's a direct
-            // translation of field names from GL's MS SQL Server data store. In
+            // translation of field names from GL's MS SQL Server database. In
             // queries both upper and lower case may be used as MS SQL Server is
-            // generally case invariant.
+            // generally case insensitive.
             Assert.Equal("A10", columns["PREFIX"]);
             Assert.Equal("N1", columns["ACTIVE"]);
         }

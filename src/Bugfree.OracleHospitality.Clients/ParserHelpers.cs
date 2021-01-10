@@ -3,8 +3,8 @@ using System.Linq;
 using XA = System.Xml.Linq.XAttribute;
 using XE = System.Xml.Linq.XElement;
 
-// DESIGN: we could put these helpers in a base class shared across CRM and POS
-// APIs requests/responses classes. That would introduce another level in the
+// We could put these helpers in a base class shared across CRM and POS APIs
+// requests/responses classes. That would introduce another level in the
 // inheritance hierarchy with <some-crm-response> inheriting from CrmResponse
 // inheriting from Response where methods below would go. Such deep inheritance
 // hierarchy couples components unnecessarily.

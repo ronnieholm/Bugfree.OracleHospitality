@@ -61,8 +61,8 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
             // UNDOCUMENTED: POS API spec, Page 28 states that Data element's
             // content is limited to 80 characters, but not which characters.
             // From the table on Page 28, '/' isn't part of the existing Ax set
-            // and it's unclear whether it's correct to add it sowe check length
-            // only.
+            // and it's unclear whether it's correct to add it so we check
+            // length only.
             const int DataElementValueMaxLength = 80;
             if (value.Length > DataElementValueMaxLength)
                 throw new ArgumentException($"Expected Data element value to be less than {DataElementValueMaxLength} characters");
@@ -161,7 +161,7 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
             // element must contain <Type>, <Data>, and <Text> elements. It's
             // unclear why <Code>, short for coupon code, is left out. It's part
             // of the response of the COUPON_INQUIRY operation. Perhaps it isn't
-            // always part of the response of other operations, perhaps
+            // always part of the response of other operations or perhaps
             // documentation is out of date.
             var codeElement = ExpectElement(action, C.Code);
             Code = new ActionCode(codeElement);

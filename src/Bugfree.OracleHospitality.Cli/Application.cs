@@ -62,7 +62,7 @@ namespace Bugfree.OracleHospitality.Cli
         {
             var keyValues = keyValueArguments.ToArray();
             if (keyValues.Length % 2 != 0)
-                throw new Exception($"{nameof(keyValueArguments)} keys/values argument must have en equal number of keys/values");
+                throw new Exception($"{nameof(keyValueArguments)} keys/values argument must have an equal number of keys/values");
 
             var result = new ColumnValue[keyValues.Length / 2];
             for (var i = 0; i < result.Length; i++)

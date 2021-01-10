@@ -61,7 +61,7 @@ namespace Bugfree.OracleHospitality.Clients.UnitTests.CrmOperations
         [Fact]
         public void create_new_customer_request_generation()
         {
-            // Careful: a request without sortValue = 1 and PrimaryPosRef =
+            // Causion: a request without sortValue = 1 and PrimaryPosRef =
             // <account-number> creates a new customer that isn't associated
             // with any account. CRM API appear to not support associating the
             // customer with an account after the fact.

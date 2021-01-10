@@ -42,7 +42,7 @@ namespace Bugfree.OracleHospitality.Clients
 
             // In principle, each of 160 bits could be zero such that when
             // converting to base 36 outcome is a single zero. To ensure account
-            // numnber is always 21 digits, we left-pad encoded number. In
+            // number is always 21 digits, we left-pad encoded number. In
             // practice, SHA1 works such that we rarely end up having to pad. On
             // a sample of 1,000,000 Guids, only one ended up with 16 digits.
             return f.PadLeft(21, '0');

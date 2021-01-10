@@ -23,8 +23,8 @@ namespace Bugfree.OracleHospitality.Clients.CrmParselets
             // inferred/generated/validated by the end_to_end integration test.
             // For instance, string actually means something along the lines of
             // A1,A10,A150,A16,A200,A25,A3,A32,A4,A50,A76. The end_to_end
-            // integration test ensures that the nX types fit within CLR types
-            // used to represent these.
+            // integration test ensures that the nX types fit within the CLR
+            // types used to represent these.
             public enum Kind
             {
                 None,
@@ -90,7 +90,7 @@ namespace Bugfree.OracleHospitality.Clients.CrmParselets
 
     // Parses one Row element in the format below. Multiple customers may be 
     // associated with an account, but typically only one is. Row id is 
-    // optionally present in responses.
+    // optionally present in the responses:
     //
     // <Rows>
     //   <Row id="416440"">

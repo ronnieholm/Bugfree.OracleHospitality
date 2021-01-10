@@ -76,13 +76,13 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
 
         private void AssertConsumedResponse()
         {
-            // Because of the quality of the POS API spec, client explicitly
-            // marks each processed attribute and element of the response. If
-            // after parsing the response, an attribute or element remains, it's
-            // a parsing error. This way, the client can detect Oracle API
-            // changes or unexpected behavior in the wild. If such behavior is
-            // encountered, a test case should be added for the response and the
-            // parser adjusted to support it.
+            // Because of the low quality of the POS API spec, client explicitly
+            // marks each attribute and element of the response as processed. If
+            // after parsing the response, an attribute or element remains, it
+            // indicates a parsing error. This way, the client can detect Oracle
+            // API changes or unexpected behavior in the wild. If such behavior
+            // is encountered, a test case should be added for the response and
+            // the parser adjusted to support it.
             if (UnconsumedResponse.HasElements)
                 throw new InvalidOperationException($"Expected every attribute of response to have been consumed: {UnconsumedResponse}");
             if (UnconsumedResponse.HasAttributes)
@@ -104,7 +104,7 @@ namespace Bugfree.OracleHospitality.Clients.PosOperations
             ConsumeElement(UnconsumedResponse, C.DisplayMessage);
 
             // Save off exception and throw it later when the PosResponse
-            // subclass have had a chance to parse it in its
+            // subclass have had a chance to parse response in its
             // DeconstructResponse(). We do so because we value parsing
             // correctly over immediately raising an Oracle error or we might
             // not get to parse part of the error response.

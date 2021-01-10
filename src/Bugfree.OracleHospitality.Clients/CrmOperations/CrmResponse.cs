@@ -31,8 +31,8 @@ namespace Bugfree.OracleHospitality.Clients.CrmOperations
         // PostAccountTransactionResponse overrides default HostVersion parsing.
         // Contrary to other CRM operations, its response has this attribute
         // lowercased. Inside GL Web UI, if we navigate to any account against
-        // which we ran this operation, then the account's transactions, we see
-        // this operation actually had RequestCode SV_CRM_POST_TRANS. This
+        // which we ran this operation, then to the account's transactions, we
+        // see this operation actually had RequestCode SV_CRM_POST_TRANS. This
         // indicates an undocumented POS API operation for Oracle internal use.
         public HostVersion HostVersion { get; protected set; }
 
@@ -55,11 +55,10 @@ namespace Bugfree.OracleHospitality.Clients.CrmOperations
         }
 
         // PostAccountTransactionResponse overrides default behavior which is
-        // why property is virtual. Because this operation is probably the
-        // undocumented SV_CRM_POST_TRANS POS API operation behind the scenes,
-        // its response contains a DisplayMessage in both success and failure
-        // cases. Other CRM operations includes DisplayMessage only on the error
-        // path.
+        // why property is virtual. This operation is likely the undocumented
+        // SV_CRM_POST_TRANS POS API operation behind the scenes, whose response
+        // contains a DisplayMessage in both success and failure cases. Other
+        // CRM operations includes DisplayMessage only on the error path.
         protected DisplayMessage _displayMessage;
         public virtual DisplayMessage DisplayMessage
         {

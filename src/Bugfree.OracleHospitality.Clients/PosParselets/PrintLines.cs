@@ -28,7 +28,7 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
         // The PrintLines element is undocumented and from the example in POS 
         // API spec, Page 12, it appears multiple <PrintLine> may follow each 
         // other without the PrintLines parent element. That isn't the case, 
-        // and documentation is likely out of date on this element.
+        // and documentation is likely out of date.
         public PrintLines(XE printLines)
         {
             var printLineElements = printLines.Elements(C.PrintLine).ToArray();

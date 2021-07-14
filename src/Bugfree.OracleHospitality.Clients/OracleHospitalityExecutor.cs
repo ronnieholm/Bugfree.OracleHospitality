@@ -147,7 +147,7 @@ namespace Bugfree.OracleHospitality.Clients
 
             var returnElementValueString = returnElement.Value;
             if (string.IsNullOrWhiteSpace(returnElementValueString))
-                throw new OracleHospitalityClientException("Expect operation response body inside SOAP response body");
+                throw new OracleHospitalityClientException("Expected operation response body inside SOAP response body");
 
             try
             {

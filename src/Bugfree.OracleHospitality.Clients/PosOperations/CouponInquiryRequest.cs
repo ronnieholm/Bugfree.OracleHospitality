@@ -2,16 +2,15 @@
 using Bugfree.OracleHospitality.Clients.PosParselets;
 using XE = System.Xml.Linq.XElement;
 
-namespace Bugfree.OracleHospitality.Clients.PosOperations
-{
-    public class CouponInquiryRequest : PosRequest
-    {
-        public CouponInquiryRequest(DateTime timestamp, MessageId messageId, AccountNumber accountNumber)
-            : base(timestamp, messageId, accountNumber)
-        {
-        }
+namespace Bugfree.OracleHospitality.Clients.PosOperations;
 
-        public override XE BuildRequestDocument() =>
-            BuildBaseDocument(new RequestCode(TransactionKind.COUPON_INQUIRY));
+public class CouponInquiryRequest : PosRequest
+{
+    public CouponInquiryRequest(DateTime timestamp, MessageId messageId, AccountNumber accountNumber)
+        : base(timestamp, messageId, accountNumber)
+    {
     }
+
+    public override XE BuildRequestDocument() =>
+        BuildBaseDocument(new RequestCode(TransactionKind.COUPON_INQUIRY));
 }

@@ -5,39 +5,38 @@ using XA = System.Xml.Linq.XAttribute;
 using XE = System.Xml.Linq.XElement;
 using C = Bugfree.OracleHospitality.Clients.CrmParselets.Constants;
 
-namespace Bugfree.OracleHospitality.Clients.CrmOperations
+namespace Bugfree.OracleHospitality.Clients.CrmOperations;
+
+public class GetCouponsRequest : CrmRequest
 {
-    public class GetCouponsRequest : CrmRequest
+    public string Conditions { get; }
+    public ColumnValue[] ColumnValues { get; }
+
+    public GetCouponsRequest(string requestSourceName, string conditions, ColumnValue[] columnValues)
+        : base(requestSourceName)
     {
-        public string Conditions { get; }
-        public ColumnValue[] ColumnValues { get; }
+        if (string.IsNullOrWhiteSpace(conditions))
+            throw new ArgumentException(nameof(conditions));
+        if (columnValues == null)
+            throw new ArgumentNullException(nameof(columnValues));
+        if (columnValues.Length == 0)
+            throw new ArgumentException($"{nameof(columnValues)} must not be empty");
 
-        public GetCouponsRequest(string requestSourceName, string conditions, ColumnValue[] columnValues)
-            : base(requestSourceName)
-        {
-            if (string.IsNullOrWhiteSpace(conditions))
-                throw new ArgumentException(nameof(conditions));
-            if (columnValues == null)
-                throw new ArgumentNullException(nameof(columnValues));
-            if (columnValues.Length == 0)
-                throw new ArgumentException($"{nameof(columnValues)} must not be empty");
+        Conditions = conditions;
+        ColumnValues = columnValues;
+    }
 
-            Conditions = conditions;
-            ColumnValues = columnValues;
-        }
-
-        public override XE BuildRequestDocument()
-        {
-            var request = BuildBaseDocument(RequestCode.Kind.GetCoupons);
-            request.Add(
-                new XE(
-                    C.QueryCriteria, new XA(C.conditions, Conditions),
-                    ColumnValues.Select(cv =>
-                        new XE(C.Condition,
+    public override XE BuildRequestDocument()
+    {
+        var request = BuildBaseDocument(RequestCode.Kind.GetCoupons);
+        request.Add(
+            new XE(
+                C.QueryCriteria, new XA(C.conditions, Conditions),
+                ColumnValues.Select(cv =>
+                    new XE(C.Condition,
                         new XA(C.name,
-                        cv.Column),
-                    new XA(C.value, cv.Value)))));
-            return request;
-        }
+                            cv.Column),
+                        new XA(C.value, cv.Value)))));
+        return request;
     }
 }

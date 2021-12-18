@@ -1,7 +1,6 @@
-﻿namespace Bugfree.OracleHospitality.Clients
+﻿namespace Bugfree.OracleHospitality.Clients;
+
+// Marker interface
+interface IRequestElement
 {
-    // Marker interface
-    interface IRequestElement
-    {
-    }
 }

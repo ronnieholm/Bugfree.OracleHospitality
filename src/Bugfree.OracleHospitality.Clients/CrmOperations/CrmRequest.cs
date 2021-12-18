@@ -4,34 +4,33 @@ using XA = System.Xml.Linq.XAttribute;
 using XE = System.Xml.Linq.XElement;
 using C = Bugfree.OracleHospitality.Clients.CrmParselets.Constants;
 
-namespace Bugfree.OracleHospitality.Clients.CrmOperations
+namespace Bugfree.OracleHospitality.Clients.CrmOperations;
+
+public abstract class CrmRequest
 {
-    public abstract class CrmRequest
+    protected string RequestSourceName { get; }
+
+    public abstract XE /* In0 */ BuildRequestDocument();
+
+    protected CrmRequest(string requestSourceName)
     {
-        protected string RequestSourceName { get; }
+        if (string.IsNullOrWhiteSpace(requestSourceName))
+            throw new ArgumentException(nameof(requestSourceName));
+        RequestSourceName = requestSourceName;
+    }
 
-        public abstract XE /* In0 */ BuildRequestDocument();
-
-        protected CrmRequest(string requestSourceName)
-        {
-            if (string.IsNullOrWhiteSpace(requestSourceName))
-                throw new ArgumentException(nameof(requestSourceName));
-            RequestSourceName = requestSourceName;
-        }
-
-        protected XE BuildBaseDocument(RequestCode.Kind requestCode)
-        {
-            // UNDOCUMENTED: base document for CRM requests. The concept of a
-            // base document isn't explicitly part of the CRM API spec and has
-            // been inferred from examples. For reasons unknown, GetCoupons API
-            // spec example doesn't include RequestSourceName. API probably
-            // supports it given that other operations include it, so we include
-            // RequestSourceName with every operation.
-            return new XE(C.CRMMessage,
-                new XA(C.language, new Language(Language.Kind.EnUs)),
-                new XA(C.currency, new Currency(Currency.Kind.DKK)),
-                new XE(C.RequestSource, new XA(C.name, RequestSourceName), new XA(C.version, "1")),
-                new XE(C.RequestCode, requestCode));
-        }
+    protected XE BuildBaseDocument(RequestCode.Kind requestCode)
+    {
+        // UNDOCUMENTED: base document for CRM requests. The concept of a
+        // base document isn't explicitly part of the CRM API spec and has
+        // been inferred from examples. For reasons unknown, GetCoupons API
+        // spec example doesn't include RequestSourceName. API probably
+        // supports it given that other operations include it, so we include
+        // RequestSourceName with every operation.
+        return new XE(C.CRMMessage,
+            new XA(C.language, new Language(Language.Kind.EnUs)),
+            new XA(C.currency, new Currency(Currency.Kind.DKK)),
+            new XE(C.RequestSource, new XA(C.name, RequestSourceName), new XA(C.version, "1")),
+            new XE(C.RequestCode, requestCode));
     }
 }

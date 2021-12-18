@@ -34,16 +34,21 @@ namespace Bugfree.OracleHospitality.Clients.PosParselets
             var value = responseCode.Value;
             FieldTypes.AssertA1(value);
 
-            if (value == "A")
-                Value = Kind.Approved;
-            else if (value == "D")
+            switch (value)
             {
-                var hostCodeAttribute = ExpectAttribute(responseCode, C.hostCode);
-                HostCode = hostCodeAttribute.Value;
-                Value = Kind.DataCenterInitiatedError;
+                case "A":
+                    Value = Kind.Approved;
+                    break;
+                case "D":
+                {
+                    var hostCodeAttribute = ExpectAttribute(responseCode, C.hostCode);
+                    HostCode = hostCodeAttribute.Value;
+                    Value = Kind.DataCenterInitiatedError;
+                    break;
+                }
+                default:
+                    throw new ArgumentException($"Unsupported {nameof(Kind)} value: '{value}'");
             }
-            else
-                throw new ArgumentException($"Unsupported {nameof(Kind)} value: '{value}'");
         }
 
         public ResponseCode(Kind kind)

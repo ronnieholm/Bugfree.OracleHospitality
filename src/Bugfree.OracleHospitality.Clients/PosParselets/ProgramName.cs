@@ -1,9 +1,8 @@
-﻿namespace Bugfree.OracleHospitality.Clients.PosParselets
+﻿namespace Bugfree.OracleHospitality.Clients.PosParselets;
+
+public class ProgramName : IResponseElement
 {
-    public class ProgramName : IResponseElement
-    {
-        public string Value { get; }
-        public ProgramName(string value) => Value = FieldTypes.AssertA32(value);
-        public override string ToString() => Value;
-    }
+    public string Value { get; }
+    public ProgramName(string value) => Value = FieldTypes.AssertA32(value);
+    public override string ToString() => Value;
 }

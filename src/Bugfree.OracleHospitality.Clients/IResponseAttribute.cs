@@ -1,7 +1,6 @@
-﻿namespace Bugfree.OracleHospitality.Clients
+﻿namespace Bugfree.OracleHospitality.Clients;
+
+// Marker interface
+interface IResponseAttribute
 {
-    // Marker interface
-    interface IResponseAttribute
-    {
-    }
 }

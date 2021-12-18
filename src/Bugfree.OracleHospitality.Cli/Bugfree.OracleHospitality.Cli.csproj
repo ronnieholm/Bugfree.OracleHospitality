@@ -6,6 +6,7 @@
     <Authors>Ronnie Holm</Authors>
     <Company>Bugfree Consulting</Company>
     <Description>.NET command-line interface to Oracle Hospitality, Gift &amp; Loyalty Point of Sale and Customer Relationship Management web services.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,6 +26,10 @@
   <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
